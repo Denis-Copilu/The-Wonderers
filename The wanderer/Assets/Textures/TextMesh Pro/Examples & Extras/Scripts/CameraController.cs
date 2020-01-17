@@ -44,8 +44,6 @@ namespace TMPro.Examples
 
         // Controls for Touches on Mobile devices
         //private float prev_ZoomDelta;
-
-
         private const string event_SmoothingValue = "Slider - Smoothing Value";
         private const string event_FollowDistance = "Slider - Camera Zoom";
 

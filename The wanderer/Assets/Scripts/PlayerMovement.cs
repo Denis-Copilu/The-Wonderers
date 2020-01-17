@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float velX;
     float velY;
     bool facingRight = true;
+    public Animator animator;
    
     // Update is called once per frame
     void Update()
@@ -24,12 +25,21 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 horizontal = new Vector3(velX, 0.0f, 0.0f);
         transform.position = transform.position + horizontal*moveSpeed;
+        
+        animator.SetFloat("Speed", System.Math.Abs(velX));
+       // OnLanding();
+    }
+    public void OnLanding()
+    {
+        animator.SetBool("IsJumping", false);
+
     }
     void Jump()
     {
         if (Input.GetButtonDown("Jump"))
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            //animator.SetBool("IsJumping", true);
         }
     }
     private void LateUpdate()
