@@ -12,7 +12,12 @@ public class PlayerMovement : MonoBehaviour
     float velY;
     bool facingRight = true;
     public Animator animator;
-   
+    public int contor=0;
+    //public static float healthAmount;
+    /*private void Start()
+    {
+        healthAmount = 1;
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = transform.position + horizontal*moveSpeed;
         
         animator.SetFloat("Speed", System.Math.Abs(velX));
+        
        // OnLanding();
     }
     public void OnLanding()
@@ -38,10 +44,34 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            contor++;
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            if(contor >1)
+            {
+                jumpForce = jumpForce-30;
+                
+            }
             //animator.SetBool("IsJumping", true);
+            //SoundManager.PlaySound();
         }
+        
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Coins"))
+        {
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("Putere"))
+        {
+
+            Destroy(other.gameObject);
+        }
+        /*
+        if (other.gameObject.CompareTag("Panou"))
+            healthAmount -= 0.1f;*/
+    }
+    
     private void LateUpdate()
     {
       Vector3 localScale = transform.localScale;

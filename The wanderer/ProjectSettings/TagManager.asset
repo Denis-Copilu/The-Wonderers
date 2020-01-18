@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player_1
+  - Coins
+  - Panou
+  - Respawn_1
+  - Bomb
+  - Putere
+  - Putere_next
   layers:
   - Default
   - TransparentFX
@@ -42,6 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fundal
+    uniqueID: 1010327685
+    locked: 0
   - name: Player_1
     uniqueID: 1051562861
+    locked: 0
+  - name: 2
+    uniqueID: 944657929
     locked: 0
